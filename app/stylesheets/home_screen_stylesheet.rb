@@ -1,4 +1,5 @@
 class HomeScreenStylesheet < ApplicationStylesheet
+  include PostCellStylesheet
 
   def setup
     # Add stylesheet specific setup stuff here.

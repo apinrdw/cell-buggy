@@ -1,12 +1,12 @@
-class HomeScreen < PM::Screen
+class HomeScreen < PM::TableScreen
   title "Your title here"
   stylesheet HomeScreenStylesheet
+
+  attr_accessor :cell_class
 
   def on_load
     set_nav_bar_button :left, system_item: :camera, action: :nav_left_button
     set_nav_bar_button :right, title: "Right", action: :nav_right_button
-
-    @hello_world = append!(UILabel, :hello_world)
   end
 
   def nav_left_button
@@ -15,6 +15,30 @@ class HomeScreen < PM::Screen
 
   def nav_right_button
     mp 'Right button'
+  end
+
+  def table_data
+    params = {
+      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+      image: 'https://placehold.it/48x48',
+      author: 'apinrdw'
+    }
+
+    [
+      {
+        cells: 20.times.map do |i|
+          post = Post.new(params.merge(title: "Post #{i + 1}"))
+
+          {
+            cell_class: cell_class,
+            height: 60,
+            properties: {
+              post: post
+            }
+          }
+        end
+      }
+    ]
   end
 
   # You don't have to reapply styles to all UIViews, if you want to optimize, another way to do it

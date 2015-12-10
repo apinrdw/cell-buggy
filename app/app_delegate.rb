@@ -9,7 +9,7 @@ class AppDelegate < PM::Delegate
 
   def on_load(app, options)
     cdq.setup # Remove this if you aren't using CDQ
-    open HomeScreen.new(nav_bar: true)
+    open HomeScreen.new(nav_bar: true, cell_class: BuggyPostCell)
   end
 
   # Remove this if you are only supporting portrait
