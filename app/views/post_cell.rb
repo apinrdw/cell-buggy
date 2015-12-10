@@ -23,6 +23,10 @@ class PostCell < PM::TableViewCell
       find(@author).data(post.author)
 
       c.find(:post_title_cell, :post_text_cell, :post_author_cell).reapply_styles
+
+      p post.title
+      p c.find(:post_image_cell).count
+      p '====='
     end
   end
 end
