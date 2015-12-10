@@ -9,7 +9,12 @@ class AppDelegate < PM::Delegate
 
   def on_load(app, options)
     cdq.setup # Remove this if you aren't using CDQ
+
+    # This approach might do some multiple allocation for TableViewCell
     open HomeScreen.new(nav_bar: true, cell_class: BuggyPostCell)
+
+    # Try this to see the different when using instance variable
+    # open HomeScreen.new(nav_bar: true, cell_class: PostCell)
   end
 
   # Remove this if you are only supporting portrait
