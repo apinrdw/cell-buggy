@@ -1,11 +1,4 @@
 module PostCellStylesheet
-  def layout_cell(view)
-    view.append!(UIImageView, :post_image_cell)
-    view.append!(UILabel, :post_title_cell)
-    view.append!(UILabel, :post_text_cell)
-    view.append!(UILabel, :post_author_cell)
-  end
-
   def post_cell(st)
     st.frame = { w: screen_width }
   end
