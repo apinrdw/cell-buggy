@@ -3,14 +3,18 @@ class BuggyPostCell < PM::TableViewCell
 
   def on_load
     apply_style :post_cell
+
+    find(self.contentView).tap do |view|
+      view.append!(UIImageView, :post_image_cell)
+      view.append!(UILabel, :post_title_cell)
+      view.append!(UILabel, :post_text_cell)
+      view.append!(UILabel, :post_author_cell)
+    end
   end
 
   def post=(post)
     @post = post
-    content = find(self.contentView)
-    self.table_screen.stylesheet.layout_cell(content)
-
-    content.tap do |c|
+    find(self.contentView).tap do |c|
       c.find(UILabel).data('')
       c.find(:post_image_cell).style { |st| st.remote_image = post.image }
       c.find(:post_title_cell).data(post.title)
